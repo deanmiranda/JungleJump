@@ -1,4 +1,6 @@
 extends CharacterBody2D
+signal life_changed
+signal died
 
 @export var gravity = 750
 @export var run_speed = 150
@@ -7,6 +9,7 @@ extends CharacterBody2D
 enum { IDLE, HURT, RUN, JUMP, DEAD }
 
 var state = IDLE
+var life = 3: set = set_life
 
 func _ready():
 	change_state(IDLE)
@@ -16,22 +19,25 @@ func change_state(new_state):
 	match new_state:
 		IDLE:
 			$AnimationPlayer.play('idle')
-			$CollisionShape2D.set_deferred("disabled", false)
 		HURT:
 			$AnimationPlayer.play('hurt')
-			$CollisionShape2D.set_deferred("disabled", true)
+			velocity.y = -200
+			velocity.x = -100  * sign(velocity.x)
+			life -= 1
+			await get_tree().create_timer(0.5).timeout
+			change_state(IDLE)
 		RUN:
 			$AnimationPlayer.play('run')
-			$CollisionShape2D.set_deferred("disabled", false)
 		JUMP:
 			$AnimationPlayer.play('jump_up')
-			$CollisionShape2D.set_deferred('disabled', false)
 		DEAD:
+			died.emit()
 			hide()
-			$CollisionShape2D.set_deferred("disabled", true)
-	state = new_state
-	
+
 func get_input():
+	if state == HURT:
+		return
+
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_pressed("jump")
@@ -53,19 +59,34 @@ func get_input():
 		change_state(IDLE)
 	if state in [IDLE, RUN] and !is_on_floor():
 		change_state(JUMP)
-		
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	get_input()
-	
 	move_and_slide()
+	if state == HURT:
+		return
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		if collision.get_collider().is_in_group("danger"):
+			hurt()
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
 	if state == JUMP and velocity.y > 0:
 		$AnimationPlayer.play('jump_down')
-	
+
 func reset(_position):
+	life = 3
 	position = _position
 	show()
 	change_state(IDLE)
+
+func set_life(value):
+	life = value
+	life_changed.emit(life)
+	if life <= 0:
+		change_state(DEAD)
+
+func hurt():
+	if state != HURT:
+		change_state(HURT)
