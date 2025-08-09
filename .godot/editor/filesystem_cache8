@@ -1,0 +1,31 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1754746942
+icon.svg::CompressedTexture2D::7550165564153143402::1754742392::1754746921::1::::<><>::
+::res://assets/::1754746944
+cherry_spawn.png::CompressedTexture2D::2136665073888383649::1754516195::1754746951::1::::<><>::
+gem_spawn.png::CompressedTexture2D::4188600462613953267::1754516195::1754746951::1::::<><>::
+heart.png::CompressedTexture2D::1346727183872717040::1754516195::1754746951::1::::<><>::
+Kenney Thick.ttf::FontFile::3820192818617323008::1754516195::1754746945::1::::<><>::
+player_sheet.png::CompressedTexture2D::805127965210563130::1754516195::1754746951::1::::<><>::
+::res://assets/audio/::1754746944
+credit.txt::TextFile::-1::1754516195::0::1::::<><>::
+enemy_hit.ogg::AudioStreamOggVorbis::8715924351008984289::1754516195::1754746945::1::::<><>::
+Grasslands Theme.ogg::AudioStreamOggVorbis::1776992691769709385::1754516195::1754746945::1::::<><>::
+hurt1.ogg::AudioStreamOggVorbis::485990467030820039::1754516195::1754746945::1::::<><>::
+Intro Theme.ogg::AudioStreamOggVorbis::4972438152427699906::1754516195::1754746945::1::::<><>::
+jump4.ogg::AudioStreamOggVorbis::5711234059014519314::1754516195::1754746945::1::::<><>::
+pickup2.ogg::AudioStreamOggVorbis::1801160369623626384::1754516195::1754746945::1::::<><>::
+::res://assets/environment/::1754746944
+back.png::CompressedTexture2D::303796205625079308::1754516195::1754746960::1::::<><>::
+middle.png::CompressedTexture2D::7079528999988038987::1754516195::1754746960::1::::<><>::
+props.png::CompressedTexture2D::779457162336985604::1754516195::1754746960::1::::<><>::
+tileset.png::CompressedTexture2D::7974346752655586113::1754516195::1754746960::1::::<><>::
+::res://assets/sprites/::1754746944
+cherry.png::CompressedTexture2D::7105205255756207109::1754516195::1754746957::1::::<><>::
+enemy-death.png::CompressedTexture2D::7601243004903907936::1754516195::1754746957::1::::<><>::
+gem.png::CompressedTexture2D::4001102630527814901::1754516195::1754746957::1::::<><>::
+opossum.png::CompressedTexture2D::3828835873813442887::1754516195::1754746957::1::::<><>::
+::res://assets/tilesets/::1754746944
+tiles_items.tres::TileSet::8135220239633542438::1754516195::0::1::::<><>::uid://5patdg8kse7b::::res://assets/cherry_spawn.png<>uid://b0w8vxeqdexyx::::res://assets/gem_spawn.png<>uid://ldtssxu78xc3::::res://assets/environment/props.png
+tiles_spikes.tres::TileSet::3173176149120731005::1754516195::0::1::::<><>::uid://ldtssxu78xc3::::res://assets/environment/props.png
+tiles_world.tres::TileSet::7699450735090979213::1754516195::0::1::::<><>::uid://dlu3lc2egdqu8::::res://assets/environment/tileset.png<>uid://ldtssxu78xc3::::res://assets/environment/props.png
