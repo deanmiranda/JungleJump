@@ -10,3 +10,5 @@ res://assets/tilesets/tiles_world.tres
 res://scripts/level.gd
 res://scenes/levels/Level01.tscn
 res://scenes/levels/level01.tscn
+res://scenes/enemies/enemy.tscn
+res://scripts/enemy.gd

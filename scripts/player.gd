@@ -70,11 +70,17 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if collision.get_collider().is_in_group("danger"):
 			hurt()
+		if collision.get_collider().is_in_group("enemies"):
+			if position.y < collision.get_collider().position.y:
+				collision.get_collider().take_damage()
+				velocity.y = -200
+			else:
+				hurt()
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
 	if state == JUMP and velocity.y > 0:
 		$AnimationPlayer.play('jump_down')
-
+	
 func reset(_position):
 	life = 3
 	position = _position
