@@ -5,15 +5,10 @@ res://assets/tilesets/tiles_world.tres
 res://scenes/main.tscn
 res://scenes/items/item.tscn
 res://scenes/levels/level_base.tscn
-res://scenes/levels/level_01.tscn
+res://scenes/levels/level_00.tscn
 res://scenes/enemies/enemy.tscn
 res://scenes/ui/HUD.tscn
 res://scenes/ui/title.tscn
 res://scenes/items/door.tscn
-res://scenes/levels/level_02.tscn
-res://scenes/levels/level_00.tscn
-res://scripts/level.gd
-res://scripts/item.gd
-res://scripts/game_state.gd
-res://scripts/player.gd
 res://scripts/hud.gd
+res://scenes/levels/level_01.tscn
