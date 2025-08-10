@@ -31,3 +31,4 @@ res://scripts/boss.gd
 res://scenes/levels/level_04.tscn
 res://scenes/enemies/projectile.tscn
 res://scripts/projectile.gd
+res://scenes/levels/level_05.tscn

@@ -18,10 +18,6 @@ func _ready():
 	if boss_ref:
 		boss_ref.died.connect(_on_boss_died)
 
-	for d in get_tree().get_nodes_in_group("Door"): # add the Door scene root to group "Door"
-		print("Door present:", d.get_path(), " monitoring=", d.monitoring)
-		print('boss_door on ready ', boss_door)
-
 func set_camera_limits():
 	var map_size = $World.get_used_rect()
 	var cell_size = $World.tile_set.tile_size
@@ -29,6 +25,7 @@ func set_camera_limits():
 	$Player/Camera2D.limit_right = (map_size.end.x + 5) * cell_size.x
 			
 func spawn_items() -> void:
+	
 	var cells: Array[Vector2i] = $Items.get_used_cells(0)
 	for cell in cells:
 		var td: TileData = $Items.get_cell_tile_data(0, cell)
@@ -50,11 +47,11 @@ func spawn_items() -> void:
 			if boss_ref and boss_door == null:
 				boss_door = door
 				_set_boss_door_locked(true)
-				
-	print('boss_ref on ready = ', boss_ref)
-	print('boss_door after spawn = ', boss_door)
-	for d in get_tree().get_nodes_in_group("door"):
-		print("Door present:", d.get_path(), " monitoring=", d.monitoring, " mask=", d.collision_mask)
+		else:
+			var item := item_scene.instantiate() as Item
+			add_child(item)
+			item.init(t, world_pos)
+			item.picked_up.connect(self._on_item_picked_up)
 
 func _on_item_picked_up(t: String) -> void:
 	GameState.increment_score()
@@ -104,14 +101,12 @@ func create_ladders():
 			c.shape = s
 
 func _on_boss_died() -> void:
-	print('boss_ref=', boss_ref, ' boss_door=', boss_door)
 	if boss_door:
 		_set_boss_door_locked(false)
 		boss_door.modulate.a = 0.0
 		boss_door.create_tween().tween_property(boss_door, "modulate:a", 1.0, 0.5)
 
 func _set_boss_door_locked(locked: bool) -> void:
-	print('locked is ', locked)
 	if boss_door == null:
 		return
 	# Hide/show

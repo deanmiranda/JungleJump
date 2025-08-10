@@ -2,7 +2,7 @@ extends Node
 
 signal score_updated(new_score)
 
-var num_levels = 4
+var num_levels = 5
 var current_level = 0
 var score = 0
 

@@ -154,7 +154,6 @@ func _physics_process(delta):
 				else:
 					hurt()
 			else:
-				# It's not a real enemy (e.g., TileMap spikes) — treat as hazard
 				hurt()
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
@@ -166,6 +165,7 @@ func _physics_process(delta):
 	if global_position.y >= fall_death_y:
 		hurt()
 		return
+
 func reset(_position):
 	life = 3
 	position = _position
