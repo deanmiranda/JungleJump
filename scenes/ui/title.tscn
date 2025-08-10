@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dr3a87l55sqks"]
+[gd_scene load_steps=13 format=3 uid="uid://dr3a87l55sqks"]
 
 [ext_resource type="Texture2D" uid="uid://5q57n61fa6ln" path="res://assets/environment/back.png" id="1_4v1qu"]
 [ext_resource type="Script" uid="uid://brx451dy0v5mo" path="res://scripts/title.gd" id="1_ve8eu"]
 [ext_resource type="Texture2D" uid="uid://c8j1ah0nogttm" path="res://assets/environment/middle.png" id="2_s1drf"]
 [ext_resource type="FontFile" uid="uid://bbb0offmfaf2e" path="res://assets/Kenney Thick.ttf" id="3_ve8eu"]
 [ext_resource type="Texture2D" uid="uid://8b33euuq78w" path="res://assets/sprites/cherry.png" id="4_s1drf"]
+[ext_resource type="AudioStream" uid="uid://cs8tvel4wisyg" path="res://assets/audio/Intro Theme.ogg" id="6_yo48d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yo48d"]
 font = ExtResource("3_ve8eu")
@@ -360,3 +361,6 @@ position = Vector2(207, 424)
 texture = ExtResource("4_s1drf")
 hframes = 5
 frame = 1
+
+[node name="IntroMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_yo48d")

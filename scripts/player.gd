@@ -98,4 +98,5 @@ func hurt():
 		change_state(HURT)
 
 func _on_door_body_entered(_body):
+	print('body entered door!')
 	GameState.next_level()

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsrko1q1fouov"]
+
+[ext_resource type="PackedScene" uid="uid://b0otxfha046rb" path="res://scenes/levels/level.tscn" id="1_fvfhs"]
+[ext_resource type="PackedScene" uid="uid://stdrudko1go4" path="res://scenes/items/door.tscn" id="2_o4mod"]
+
+[node name="level_03" instance=ExtResource("1_fvfhs")]
+
+[node name="Items" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(-65544, 0, 0, -9, 327683, 12, -65530, 327683, 12, 6, 327683, 12, 65542, 327683, 12, 131063, 327683, 12, 65527, 327683, 12, -131070, 983043, 6, -65534, 983043, 7, -131069, 1048579, 6, -65533, 1048579, 7, -131068, 1114115, 6, -65532, 1114115, 7)
+
+[node name="SpawnPoint" parent="." index="5"]
+position = Vector2(-39, -91)
+
+[node name="Door" parent="." index="8" instance=ExtResource("2_o4mod")]
+position = Vector2(8, -9)
+
+[connection signal="body_entered" from="Door" to="Player" method="_on_door_body_entered"]

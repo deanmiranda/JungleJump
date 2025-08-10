@@ -119,6 +119,7 @@ texture = ExtResource("3_pu74y")
 1:12/0 = 0
 2:12/0 = 0
 5:12/0 = 0
+5:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:12/0 = 0
 9:12/0 = 0
 11:12/0 = 0
@@ -145,6 +146,7 @@ texture = ExtResource("3_pu74y")
 2:5/0/custom_data_0 = "door"
 
 [resource]
+physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "type"
 custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_ipjv1")

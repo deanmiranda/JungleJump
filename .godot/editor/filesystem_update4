@@ -14,3 +14,9 @@ res://scripts/hud.gd
 res://scenes/levels/level_01.tscn
 res://scripts/level.gd
 res://scripts/game_state.gd
+res://scripts/title.gd
+res://scripts/player.gd
+res://scripts/main.gd
+res://scenes/levels/level_02.tscn
+res://scenes/levels/level_03.tscn
+res://scenes/levels/level.tscn
