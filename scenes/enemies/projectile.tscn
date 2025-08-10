@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c62xuysx52uq6"]
+
+[ext_resource type="Script" uid="uid://diggpvbmbfmkl" path="res://scripts/projectile.gd" id="1_io4ym"]
+[ext_resource type="Texture2D" uid="uid://babeiktvrpdwl" path="res://assets/sprites/flying_demon/flying_demon/fireball/spritesheet/spritesheet.png" id="2_a3hgl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3hgl"]
+height = 34.0
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_io4ym")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a3hgl")
+hframes = 36
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_a3hgl")

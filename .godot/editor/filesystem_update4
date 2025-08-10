@@ -25,3 +25,9 @@ res://scripts/item.gd
 res://scenes/levels/ladders.tscn
 res://scenes/levels/moving_platform.tscn
 res://scripts/moving_platform.gd
+res://scenes/enemies/boss.tscn.tscn
+res://scenes/enemies/boss.tscn
+res://scripts/boss.gd
+res://scenes/levels/level_04.tscn
+res://scenes/enemies/projectile.tscn
+res://scripts/projectile.gd

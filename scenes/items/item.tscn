@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cxaqfm4udicbl" path="res://assets/audio/pickup2.ogg" id="3_fat2f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfqyq"]
-radius = 8.06226
+radius = 7.0
 
 [sub_resource type="Animation" id="Animation_27fjs"]
 length = 0.001
@@ -50,9 +50,9 @@ _data = {
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_jgeia")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, 1)
 texture = ExtResource("2_fat2f")
 offset = Vector2(3, -1)
 hframes = 5
@@ -69,5 +69,11 @@ autoplay = "item"
 
 [node name="ItemSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_fat2f")
+volume_db = -18.017
+pitch_scale = 0.96
+attenuation = 0.812253
+max_polyphony = 1681
+panning_strength = 0.0
+parameters/looping = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

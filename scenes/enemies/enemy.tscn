@@ -122,5 +122,6 @@ autoplay = "walk"
 
 [node name="EnemySound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_fcftc")
+volume_db = -33.717
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

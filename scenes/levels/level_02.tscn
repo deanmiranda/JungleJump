@@ -6,6 +6,9 @@
 
 [node name="level_02" instance=ExtResource("1_vq1pa")]
 
+[node name="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
+centered = false
+
 [node name="Danger" parent="." index="1" groups=["enemies"]]
 
 [node name="Items" parent="." index="2" groups=["items"]]
@@ -26,18 +29,21 @@ position = Vector2(741, 39)
 position = Vector2(113, -16)
 
 [node name="MovingPlatform4" parent="." index="11" instance=ExtResource("3_c5o3r")]
-position = Vector2(159, 72)
+position = Vector2(-95, 68)
 
-[node name="MovingPlatform5" parent="." index="12" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform7" parent="." index="12" instance=ExtResource("3_c5o3r")]
+position = Vector2(-7, 111)
+
+[node name="MovingPlatform5" parent="." index="13" instance=ExtResource("3_c5o3r")]
 position = Vector2(237, 28)
 
-[node name="MovingPlatform6" parent="." index="13" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform6" parent="." index="14" instance=ExtResource("3_c5o3r")]
 position = Vector2(91, 137)
 
-[node name="MovingPlatform2" parent="." index="14" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform2" parent="." index="15" instance=ExtResource("3_c5o3r")]
 position = Vector2(368, 86)
 
-[node name="MovingPlatform3" parent="." index="15" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform3" parent="." index="16" instance=ExtResource("3_c5o3r")]
 position = Vector2(517, 13)
 
 [connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]
