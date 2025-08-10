@@ -23,6 +23,7 @@ func _physics_process(delta):
 		queue_free()
 
 func take_damage():
+	$EnemySound.play()
 	$AnimationPlayer.play("death")
 	$CollisionShape2D.set_deferred("disabled", true)
 	set_physics_process(false)

@@ -44,6 +44,11 @@ func _on_item_picked_up():
 	GameState.increment_score()
 
 func _on_player_died() -> void:
+	$Music.stop()
+	var parent_node = get_parent()
+	var hud_node = get_node_or_null("CanvasLayer/HUD")
+	hud_node.show_game_over()
+	await get_tree().create_timer(2.5).timeout
 	GameState.restart()
 	
 func _on_door_body_entered(_body):

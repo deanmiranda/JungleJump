@@ -16,7 +16,6 @@ func restart():
 
 func next_level():
 	current_level += 1
-	print('next level ', current_level)
 	if current_level <= num_levels:
 		call_deferred("_go_game")
 

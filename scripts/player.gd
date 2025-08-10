@@ -6,11 +6,14 @@ signal died
 @export var gravity = 750
 @export var run_speed = 150
 @export var jump_speed = -300
+@export var max_jumps = 2
+@export var double_jump_factor = 1.5
 
 enum { IDLE, HURT, RUN, JUMP, DEAD }
 
 var state = IDLE
 var life = 3: set = set_life
+var jump_count = 0
 
 func _ready():
 	change_state(IDLE)
@@ -31,12 +34,16 @@ func change_state(new_state):
 			$AnimationPlayer.play('run')
 		JUMP:
 			$AnimationPlayer.play('jump_up')
+			jump_count = 1
 		DEAD:
 			died.emit()
 			hide()
+			velocity = Vector2.ZERO
+			set_physics_process(false)
+			$GameOverMusic.play()
 
 func get_input():
-	if state == HURT:
+	if state == HURT or state == DEAD:
 		return
 
 	var right = Input.is_action_pressed("right")
@@ -50,6 +57,11 @@ func get_input():
 	if left:
 		velocity.x -= run_speed
 		$Sprite2D.flip_h = true
+	if jump and state == JUMP and jump_count < max_jumps and jump_count > 0:
+		$JumpSound.play()
+		$AnimationPlayer.play("jump_up")
+		velocity.y = jump_speed / double_jump_factor
+		jump_count += 1
 	if jump and is_on_floor():
 		change_state(JUMP)
 		velocity.y = jump_speed
@@ -61,6 +73,8 @@ func get_input():
 		change_state(JUMP)
 
 func _physics_process(delta):
+	if state == DEAD:
+		return
 	velocity.y += gravity * delta
 	get_input()
 	move_and_slide()
@@ -78,6 +92,8 @@ func _physics_process(delta):
 				hurt()
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
+		jump_count = 0
+		$Dust.emitting = true
 	if state == JUMP and velocity.y > 0:
 		$AnimationPlayer.play('jump_down')
 	
@@ -96,7 +112,7 @@ func set_life(value):
 func hurt():
 	if state != HURT:
 		change_state(HURT)
+		$HurtSound.play()
 
 func _on_door_body_entered(_body):
-	print('body entered door!')
 	GameState.next_level()

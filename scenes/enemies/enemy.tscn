@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://oc036jp7ebtc"]
+[gd_scene load_steps=10 format=3 uid="uid://oc036jp7ebtc"]
 
 [ext_resource type="Texture2D" uid="uid://da5upyqx2igfy" path="res://assets/sprites/opossum.png" id="1_6xk8f"]
 [ext_resource type="Script" uid="uid://q7ipospw7jfk" path="res://scripts/enemy.gd" id="1_8e3ao"]
 [ext_resource type="Texture2D" uid="uid://c6ja2a68d1q0b" path="res://assets/sprites/enemy-death.png" id="2_38ino"]
+[ext_resource type="AudioStream" uid="uid://b8x1g5dwiolln" path="res://assets/audio/enemy_hit.ogg" id="4_fcftc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8e3ao"]
 size = Vector2(27, 14)
@@ -118,5 +119,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_lu5c6")
 }
 autoplay = "walk"
+
+[node name="EnemySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_fcftc")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

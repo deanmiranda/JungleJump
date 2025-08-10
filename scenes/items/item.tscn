@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://clyxi4pmowdd0"]
+[gd_scene load_steps=8 format=3 uid="uid://clyxi4pmowdd0"]
 
 [ext_resource type="Script" uid="uid://hkhqbw7uglcd" path="res://scripts/item.gd" id="1_jgeia"]
 [ext_resource type="Texture2D" uid="uid://s3ttnejrhf3d" path="res://assets/sprites/gem.png" id="2_fat2f"]
+[ext_resource type="AudioStream" uid="uid://cxaqfm4udicbl" path="res://assets/audio/pickup2.ogg" id="3_fat2f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfqyq"]
 radius = 8.06226
@@ -65,5 +66,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_y74tu")
 }
 autoplay = "item"
+
+[node name="ItemSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_fat2f")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

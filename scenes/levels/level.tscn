@@ -47,3 +47,5 @@ position = Vector2(-100, -3)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_40ga3")
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]

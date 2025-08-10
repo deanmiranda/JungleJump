@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dy7t3058n5tcv"]
+[gd_scene load_steps=15 format=3 uid="uid://dy7t3058n5tcv"]
 
 [ext_resource type="Script" uid="uid://c6mkyxknswl6m" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cxw32v8ro66o5" path="res://assets/player_sheet.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bu4vdv40vvwid" path="res://assets/audio/jump4.ogg" id="3_dqkch"]
+[ext_resource type="AudioStream" uid="uid://cn8p31conqrh0" path="res://assets/audio/hurt1.ogg" id="4_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://bjtk7ddtsnq4x" path="res://assets/game-over-arcade-6435.ogg" id="5_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(9, 18)
@@ -115,6 +118,10 @@ _data = {
 &"run": SubResource("Animation_dqkch")
 }
 
+[sub_resource type="Gradient" id="Gradient_dqkch"]
+offsets = PackedFloat32Array(0, 0.984202, 1)
+colors = PackedColorArray(0.608702, 0.638199, 0.00287244, 1, 1, 1, 0.968627, 0, 1, 1, 1, 1)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
@@ -140,3 +147,30 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_qhqgy")
 }
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dqkch")
+volume_db = -19.423
+pitch_scale = 2.75
+panning_strength = 3.0
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qlg0r")
+
+[node name="Dust" type="CPUParticles2D" parent="."]
+position = Vector2(-2, 0)
+rotation = 1.5708
+emitting = false
+amount = 20
+lifetime = 0.45
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 7)
+initial_velocity_max = 10.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_dqkch")
+
+[node name="GameOverMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qlg0r")

@@ -15,4 +15,5 @@ func init (type, _position):
 # This signal is probably wrong! page 112 says on item body entered but I couldn't use that
 func _on_body_entered(_body: Node2D) -> void:
 	picked_up.emit()
+	$ItemSound.play()
 	queue_free()

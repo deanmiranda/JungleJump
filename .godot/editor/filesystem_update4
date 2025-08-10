@@ -20,3 +20,5 @@ res://scripts/main.gd
 res://scenes/levels/level_02.tscn
 res://scenes/levels/level_03.tscn
 res://scenes/levels/level.tscn
+res://scripts/enemy.gd
+res://scripts/item.gd
