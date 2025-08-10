@@ -13,4 +13,7 @@ func restart():
 func next_level():
 	current_level += 1
 	if current_level <= num_levels:
-		get_tree().change_scene_to_file(game_scene)
+		call_deferred("_go_game")
+
+func _go_game() -> void:
+	get_tree().change_scene_to_file(game_scene)

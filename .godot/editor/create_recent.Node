@@ -1,4 +1,6 @@
+CollisionShape2D
 Sprite2D
+Area2D
 TextureRect
 AnimationPlayer
 Label
@@ -7,8 +9,6 @@ Node
 CanvasLayer
 HBoxContainer
 MarginContainer
-CollisionShape2D
 CharacterBody2D
 ParallaxLayer
 ParallaxBackground
-Marker2D

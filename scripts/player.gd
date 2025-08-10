@@ -96,3 +96,6 @@ func set_life(value):
 func hurt():
 	if state != HURT:
 		change_state(HURT)
+
+func _on_door_body_entered(_body):
+	GameState.next_level()

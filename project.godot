@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="JungleJump"
-run/main_scene="uid://dr3a87l55sqks"
+run/main_scene="uid://b3cw4ojfbprr5"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

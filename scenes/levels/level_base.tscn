@@ -30,7 +30,7 @@ layer_0/tile_data = PackedInt32Array(65535, 65536, 1, 0, 65536, 1, 1, 65536, 1, 
 [node name="Items" type="TileMap" parent="."]
 tile_set = ExtResource("2_d61h5")
 format = 2
-layer_0/tile_data = PackedInt32Array(65535, 65536, 1, 0, 65536, 1, 1, 65536, 1, 2, 65536, 1, 65534, 65536, 1, 65533, 65536, 1, -65535, 1, 0, -3, 0, 0)
+layer_0/tile_data = PackedInt32Array(-65535, 1, 0, -3, 0, 0)
 
 [node name="World" type="TileMap" parent="."]
 tile_set = ExtResource("3_6cjw3")
@@ -47,5 +47,3 @@ position = Vector2(0, -31)
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("7_g7p6o")]
 
 [connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]
-[connection signal="died" from="Player" to="." method="_on_player_died"]
-[connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]

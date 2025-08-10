@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1754832543
+::res://::1754835914
 icon.svg::CompressedTexture2D/CompressedTexture2D::2742274172589240408::1754752633::1754752643::1::::<><><>0<>0<>3215d507a0e109f98892933d284e7397<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://assets/::1754764003
 heart.png::CompressedTexture2D/CompressedTexture2D::3786611052966643025::1754752703::1754752759::1::::<><><>0<>0<>1ed7f206fc452d9f9711a019b6a0dd7e<>res://.godot/imported/heart.png-9a2fa56e49d8a002fed7c28ce07513e0.ctex::
@@ -25,29 +25,31 @@ cherry.png::CompressedTexture2D/CompressedTexture2D::68236662875200056::17547527
 enemy-death.png::CompressedTexture2D/CompressedTexture2D::6967323185780532339::1754752703::1754752759::1::::<><><>0<>0<>35a7bb4f320b0636c8ad7e62917a767c<>res://.godot/imported/enemy-death.png-84f5ace8edf644b85eb714348a483237.ctex::
 gem.png::CompressedTexture2D/CompressedTexture2D::1322390004959700407::1754759986::1754765269::1::::<><><>0<>0<>cc6df1127ef28b0c71578fa0a15617b1<>res://.godot/imported/gem.png-c28d3753a9c05558c8bb68b0051f67e8.ctex::
 opossum.png::CompressedTexture2D/CompressedTexture2D::7222435796823690666::1754752703::1754752759::1::::<><><>0<>0<>bac86384d3329583d016aa50398f21ec<>res://.godot/imported/opossum.png-5326abfccb94a12d8ef06b4e238acc38.ctex::
-::res://assets/tilesets/::1754828801
-tiles_items.tres::TileSet/TileSet::8135220239633542438::1754828801::0::1::::<><><>0<>0<><>::uid://jolefja2w5ah::::res://assets/environment/cherry_spawn.png<>uid://vkvhioxek3b2::::res://assets/environment/gem_spawn.png
-tiles_spikes.tres::TileSet/TileSet::3173176149120731005::1754828801::0::1::::<><><>0<>0<><>::uid://ba4pfmy7t2at6::::res://assets/environment/props.png
-tiles_world.tres::TileSet/TileSet::7699450735090979213::1754828801::0::1::::<><><>0<>0<><>::uid://cpfaoohawwvcq::::res://assets/environment/tileset.png<>uid://ba4pfmy7t2at6::::res://assets/environment/props.png
-::res://scenes/::1754832631
-main.tscn::PackedScene::4357225372389496588::1754832631::0::1::::<><><>0<>0<><>::uid://bm8iiy25cq53b::::res://scripts/main.gd
-player.tscn::PackedScene::8911059372559721733::1754832625::0::1::::<><><>0<>0<><>::uid://c6mkyxknswl6m::::res://scripts/player.gd<>uid://cxw32v8ro66o5::::res://assets/player_sheet.png
-::res://scenes/enemies/::1754832625
-enemy.tscn::PackedScene::988342136340618956::1754832625::0::1::::<><><>0<>0<><>::uid://da5upyqx2igfy::::res://assets/sprites/opossum.png<>uid://q7ipospw7jfk::::res://scripts/enemy.gd<>uid://c6ja2a68d1q0b::::res://assets/sprites/enemy-death.png
-::res://scenes/items/::1754832625
-item.tscn::PackedScene::5595876037600883291::1754832625::0::1::::<><><>0<>0<><>::uid://hkhqbw7uglcd::::res://scripts/item.gd<>uid://s3ttnejrhf3d::::res://assets/sprites/gem.png
-::res://scenes/levels/::1754832625
-level_1.tscn::PackedScene::6808753245763758104::1754832625::0::1::::<><><>0<>0<><>::uid://b0otxfha046rb::::res://scenes/levels/level_base.tscn<>uid://c8j1ah0nogttm::::res://assets/environment/middle.png<>uid://oc036jp7ebtc::::res://scenes/enemies/enemy.tscn
-level_base.tscn::PackedScene::4171238032788089207::1754832625::0::1::::<><><>0<>0<><>::uid://bf6t2yiqdwb1o::::res://scripts/level.gd<>uid://blhd0ogpuydej::::res://assets/tilesets/tiles_spikes.tres<>uid://dn505hopwb4de::::res://assets/tilesets/tiles_items.tres<>uid://5q57n61fa6ln::::res://assets/environment/back.png<>uid://dhxw3f8l2saqn::::res://assets/tilesets/tiles_world.tres<>uid://dy7t3058n5tcv::::res://scenes/player.tscn<>uid://c171pqodkpb32::::res://scenes/ui/HUD.tscn
-::res://scenes/ui/::1754832625
-HUD.tscn::PackedScene::6665417680976583887::1754832625::0::1::::<><><>0<>0<><>::uid://dhrabp0u0cipc::::res://scripts/hud.gd<>uid://bbb0offmfaf2e::::res://assets/Kenney Thick.ttf<>uid://bt7i6wau88tsj::::res://assets/heart.png
-title.tscn::PackedScene::8410335600382321302::1754832625::0::1::::<><><>0<>0<><>::uid://5q57n61fa6ln::::res://assets/environment/back.png<>uid://brx451dy0v5mo::::res://scripts/title.gd<>uid://c8j1ah0nogttm::::res://assets/environment/middle.png<>uid://bbb0offmfaf2e::::res://assets/Kenney Thick.ttf<>uid://8b33euuq78w::::res://assets/sprites/cherry.png
-::res://scripts/::1754832623
+::res://assets/tilesets/::1754835817
+tiles_items.tres::TileSet::8135220239633542438::1754835817::0::1::::<><><>0<>0<><>::uid://jolefja2w5ah::::res://assets/environment/cherry_spawn.png<>uid://vkvhioxek3b2::::res://assets/environment/gem_spawn.png<>uid://ba4pfmy7t2at6::::res://assets/environment/props.png
+tiles_spikes.tres::TileSet::3173176149120731005::1754835817::0::1::::<><><>0<>0<><>::uid://ba4pfmy7t2at6::::res://assets/environment/props.png
+tiles_world.tres::TileSet::7699450735090979213::1754835817::0::1::::<><><>0<>0<><>::uid://cpfaoohawwvcq::::res://assets/environment/tileset.png<>uid://ba4pfmy7t2at6::::res://assets/environment/props.png
+::res://scenes/::1754835903
+main.tscn::PackedScene::4357225372389496588::1754835903::0::1::::<><><>0<>0<><>::uid://bm8iiy25cq53b::::res://scripts/main.gd
+player.tscn::PackedScene::8911059372559721733::1754835900::0::1::::<><><>0<>0<><>::uid://c6mkyxknswl6m::::res://scripts/player.gd<>uid://cxw32v8ro66o5::::res://assets/player_sheet.png
+::res://scenes/enemies/::1754835900
+enemy.tscn::PackedScene::988342136340618956::1754835900::0::1::::<><><>0<>0<><>::uid://da5upyqx2igfy::::res://assets/sprites/opossum.png<>uid://q7ipospw7jfk::::res://scripts/enemy.gd<>uid://c6ja2a68d1q0b::::res://assets/sprites/enemy-death.png
+::res://scenes/items/::1754835900
+door.tscn::PackedScene::1302835927861909697::1754835900::0::1::::<><><>0<>0<><>::uid://ba4pfmy7t2at6::::res://assets/environment/props.png
+item.tscn::PackedScene::5595876037600883291::1754835900::0::1::::<><><>0<>0<><>::uid://hkhqbw7uglcd::::res://scripts/item.gd<>uid://s3ttnejrhf3d::::res://assets/sprites/gem.png
+::res://scenes/levels/::1754835914
+level_00.tscn::PackedScene::6808753245763758104::1754835900::0::1::::<><><>0<>0<><>::uid://b0otxfha046rb::::res://scenes/levels/level_base.tscn<>uid://c8j1ah0nogttm::::res://assets/environment/middle.png<>uid://oc036jp7ebtc::::res://scenes/enemies/enemy.tscn<>uid://stdrudko1go4::::res://scenes/items/door.tscn
+level_02.tscn::PackedScene::1190003898711152124::1754835900::0::1::::<><><>0<>0<><>::uid://b0otxfha046rb::::res://scenes/levels/level_base.tscn
+level_base.tscn::PackedScene::4171238032788089207::1754835900::0::1::::<><><>0<>0<><>::uid://bf6t2yiqdwb1o::::res://scripts/level.gd<>uid://blhd0ogpuydej::::res://assets/tilesets/tiles_spikes.tres<>uid://dn505hopwb4de::::res://assets/tilesets/tiles_items.tres<>uid://5q57n61fa6ln::::res://assets/environment/back.png<>uid://dhxw3f8l2saqn::::res://assets/tilesets/tiles_world.tres<>uid://dy7t3058n5tcv::::res://scenes/player.tscn<>uid://c171pqodkpb32::::res://scenes/ui/HUD.tscn
+::res://scenes/ui/::1754835900
+HUD.tscn::PackedScene::6665417680976583887::1754835900::0::1::::<><><>0<>0<><>::uid://dhrabp0u0cipc::::res://scripts/hud.gd<>uid://bbb0offmfaf2e::::res://assets/Kenney Thick.ttf<>uid://bt7i6wau88tsj::::res://assets/heart.png
+title.tscn::PackedScene::8410335600382321302::1754835900::0::1::::<><><>0<>0<><>::uid://5q57n61fa6ln::::res://assets/environment/back.png<>uid://brx451dy0v5mo::::res://scripts/title.gd<>uid://c8j1ah0nogttm::::res://assets/environment/middle.png<>uid://bbb0offmfaf2e::::res://assets/Kenney Thick.ttf<>uid://8b33euuq78w::::res://assets/sprites/cherry.png
+::res://scripts/::1754835359
 enemy.gd::GDScript/GDScript::1189594873034716696::1754773367::0::1::::<>CharacterBody2D<><>0<>0<><>::
 game_state.gd::GDScript/GDScript::3701288577937111164::1754832225::0::1::::<>Node<><>0<>0<><>::
 hud.gd::GDScript/GDScript::7685680991571018752::1754830493::0::1::::<>MarginContainer<><>0<>0<><>::
 item.gd::GDScript/GDScript::512419362648624227::1754766342::0::1::::<>Area2D<><>0<>0<><>::
-level.gd::GDScript/GDScript::2802563725207792358::1754832476::0::1::::<>Node2D<><>0<>0<><>::
-main.gd::GDScript::3297312599163355729::1754832623::0::1::::<>Node<><>0<>0<><>::
-player.gd::GDScript/GDScript::6974119306295995974::1754829787::0::1::::<>CharacterBody2D<><>0<>0<><>::
+level.gd::GDScript/GDScript::2802563725207792358::1754835268::0::1::::<>Node2D<><>0<>0<><>::
+main.gd::GDScript/GDScript::3297312599163355729::1754832796::0::1::::<>Node<><>0<>0<><>::
+player.gd::GDScript/GDScript::6974119306295995974::1754835359::0::1::::<>CharacterBody2D<><>0<>0<><>::
 title.gd::GDScript/GDScript::3628927451856636822::1754832417::0::1::::<>Control<><>0<>0<><>::
