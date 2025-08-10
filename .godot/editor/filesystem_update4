@@ -8,3 +8,12 @@ res://scenes/items/item.tscn
 res://scenes/levels/level_base.tscn
 res://scenes/enemies/enemy.tscn
 res://scripts/player.gd
+res://scenes/ui/HUD.tscn
+res://scripts/hud.gd
+res://scenes/ui/title.tscn
+res://scripts/game_state.gd
+res://scripts/main.gd
+res://scripts/title.gd
+res://scripts/level.gd
+res://scenes/levels/level_01.tscn
+res://scenes/levels/level_1.tscn
