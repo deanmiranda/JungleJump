@@ -12,3 +12,5 @@ res://scenes/ui/title.tscn
 res://scenes/items/door.tscn
 res://scripts/hud.gd
 res://scenes/levels/level_01.tscn
+res://scripts/level.gd
+res://scripts/game_state.gd

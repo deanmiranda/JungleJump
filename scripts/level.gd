@@ -2,7 +2,6 @@ extends Node2D
 
 signal score_changed
 var item_scene = load("res://scenes/items/item.tscn")
-var score = 0: set = set_score
 var door_scene = load("res://scenes/items/door.tscn")
 
 func _ready():
@@ -47,11 +46,7 @@ func spawn_items() -> void:
 			item.picked_up.connect(self._on_item_picked_up)
 
 func _on_item_picked_up():
-	score += 1
-
-func set_score(value):
-	score = value
-	score_changed.emit(score)
+	GameState.increment_score()
 
 func _on_player_died() -> void:
 	GameState.restart()

@@ -1,13 +1,17 @@
 extends Node
 
+signal score_updated(new_score)
+
 var num_levels = 2
 var current_level = 0
+var score = 0
 
 var game_scene = "res://scenes/main.tscn"
 var title_screen = "res://scenes/ui/title.tscn"
 
 func restart():
 	current_level = 0
+	score = 0
 	get_tree().change_scene_to_file(title_screen)
 
 func next_level():
@@ -17,3 +21,7 @@ func next_level():
 
 func _go_game() -> void:
 	get_tree().change_scene_to_file(game_scene)
+	
+func increment_score():
+	score += 1
+	score_updated.emit(score)
