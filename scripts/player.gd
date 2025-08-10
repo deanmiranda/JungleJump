@@ -135,9 +135,10 @@ func _physics_process(delta):
 	if state == DEAD:
 		return
 	get_input()
-	move_and_slide()
 	if state != CLIMB:
 		velocity.y += gravity * delta
+	move_and_slide()
+	
 	if state == HURT:
 		return
 	for i in range(get_slide_collision_count()):
