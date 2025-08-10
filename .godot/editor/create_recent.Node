@@ -1,3 +1,5 @@
+TileMap
+Area2D
 AudioStreamPlayer2D
 VBoxContainer
 HBoxContainer
@@ -6,7 +8,6 @@ GPUParticlesAttractorVectorField3D
 CPUParticles2D
 CollisionShape2D
 Sprite2D
-Area2D
 TextureRect
 AnimationPlayer
 Control

@@ -10,6 +10,7 @@ func _ready():
 	$Player.reset($SpawnPoint.position)
 	set_camera_limits()
 	spawn_items()
+	create_ladders()
 	
 func set_camera_limits():
 	var map_size = $World.get_used_rect()
@@ -55,3 +56,22 @@ func _on_door_body_entered(_body):
 	if not level_transition_started:
 		level_transition_started = true
 		GameState.next_level()
+
+
+func _on_ladders_body_entered(body: Node2D) -> void:
+	body.is_on_ladder = true
+
+func _on_ladders_body_exited(body: Node2D) -> void:
+	body.is_on_ladder = false
+
+func create_ladders():
+	var cells = $World.get_used_cells(0)
+	for cell in cells:
+		var data = $World.get_cell_tile_data(0, cell)
+		if data.get_custom_data("special") == "ladder":
+			var c = CollisionShape2D.new()
+			$Ladders.add_child(c)
+			c.position = $World.map_to_local(cell)
+			var s = RectangleShape2D.new()
+			s.size = Vector2(8, 16)
+			c.shape = s

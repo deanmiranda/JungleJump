@@ -3,17 +3,19 @@ extends CharacterBody2D
 signal life_changed
 signal died
 
-@export var gravity = 750
+@export var gravity = 450
 @export var run_speed = 150
 @export var jump_speed = -300
-@export var max_jumps = 2
+@export var max_jumps = 4
 @export var double_jump_factor = 1.5
+@export var climb_speed = 50
 
-enum { IDLE, HURT, RUN, JUMP, DEAD }
+enum { IDLE, HURT, RUN, CROUCH, JUMP, CLIMB, DEAD }
 
 var state = IDLE
 var life = 3: set = set_life
 var jump_count = 0
+var is_on_ladder = false
 
 func _ready():
 	change_state(IDLE)
@@ -35,6 +37,10 @@ func change_state(new_state):
 		JUMP:
 			$AnimationPlayer.play('jump_up')
 			jump_count = 1
+		CLIMB:
+			$AnimationPlayer.play('climb')
+		CROUCH:
+			$AnimationPlayer.play('crouch')
 		DEAD:
 			died.emit()
 			hide()
@@ -49,8 +55,24 @@ func get_input():
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
+	var up = Input.is_action_pressed('climb')
+	var down = Input.is_action_pressed('crouch')
 	
 	velocity.x = 0
+	if up and state != CLIMB and is_on_ladder:
+		change_state(CLIMB)
+	if state == CLIMB:
+		if up:
+			velocity.y = -climb_speed
+			$AnimationPlayer.play("climb")
+		elif down:
+			velocity.y = climb_speed
+			$AnimationPlayer.play("crouch")
+		else:
+			velocity.y = 0
+			$AnimationPlayer.stop
+	if state == CLIMB and not is_on_ladder:
+		change_state(IDLE)
 	if right:
 		velocity.x += run_speed
 		$Sprite2D.flip_h = false
@@ -78,6 +100,8 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	get_input()
 	move_and_slide()
+	if state != CLIMB:
+		velocity.y += gravity * delta
 	if state == HURT:
 		return
 	for i in range(get_slide_collision_count()):
