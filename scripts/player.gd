@@ -6,7 +6,7 @@ signal died
 @export var gravity = 450
 @export var run_speed = 150
 @export var jump_speed = -200
-@export var max_jumps = 300
+@export var max_jumps = 2
 @export var double_jump_factor = .75
 @export var climb_speed = 75
 @export var fall_death_y = 1000 
@@ -76,7 +76,7 @@ func get_input():
 			$AnimationPlayer.play("climb")
 		elif down:
 			velocity.y = climb_speed
-			$AnimationPlayer.play("crouch")  # Playing crouch anim while moving down on ladder
+			$AnimationPlayer.play("crouch") 
 		else:
 			velocity.y = 0
 			$AnimationPlayer.stop
@@ -131,28 +131,29 @@ func get_input():
 		velocity.x = 0
 		return
 		
+var _stomped_this_frame := false
+
 func _physics_process(delta):
-	if state == DEAD:
-		return
+	_stomped_this_frame = false
+	if state == DEAD: return
 	get_input()
+	move_and_slide()
+
 	if state != CLIMB:
 		velocity.y += gravity * delta
-	move_and_slide()
-	
-	if state == HURT:
-		return
-	for i in range(get_slide_collision_count()):
-		var c = get_slide_collision(i)
-		var col = c.get_collider()
+	if state == HURT: return
 
-		if col.is_in_group("danger"):
+	for i in range(get_slide_collision_count()):
+		var c := get_slide_collision(i)
+		var col := c.get_collider()
+
+		if col.is_in_group("danger") and not _stomped_this_frame:
 			hurt()
-		elif col.is_in_group("enemies"):
+		elif col.is_in_group("enemies") and not _stomped_this_frame:
+			# side/under contact = hurt (stomp handled by StompZone)
 			if col.has_method("take_damage"):
-				if position.y < col.position.y and velocity.y > 0:
-					col.take_damage()
-					velocity.y = -200
-				else:
+				# do nothing here; StompZone will handle top hits
+				if velocity.y <= 0: # rising or horizontal into enemy
 					hurt()
 			else:
 				hurt()
@@ -166,6 +167,14 @@ func _physics_process(delta):
 	if global_position.y >= fall_death_y:
 		hurt()
 		return
+
+func _on_StompZone_area_entered(area: Area2D) -> void:
+	if velocity.y > 50 and area.is_in_group("enemy_head"):
+		_stomped_this_frame = true
+		var enemy := area.get_parent()
+		if enemy and enemy.has_method("take_damage"):
+			enemy.take_damage()
+		velocity.y = -200.0
 
 func reset(_position):
 	life = 3

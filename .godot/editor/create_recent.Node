@@ -1,6 +1,7 @@
-Label
-Area2D
 CollisionShape2D
+Area2D
+ColorRect
+Label
 Sprite2D
 CharacterBody2D
 AnimationPlayer
@@ -11,4 +12,3 @@ AudioStreamPlayer2D
 VBoxContainer
 HBoxContainer
 GPUParticlesAttractorVectorField3D
-CPUParticles2D

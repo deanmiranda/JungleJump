@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4ahf25kubry3"]
+[gd_scene load_steps=4 format=3 uid="uid://bfhv4pu4ata1f"]
 
-[ext_resource type="PackedScene" uid="uid://b0otxfha046rb" path="res://scenes/levels/level.tscn" id="1_vq1pa"]
-[ext_resource type="PackedScene" uid="uid://stdrudko1go4" path="res://scenes/items/door.tscn" id="2_c5o3r"]
-[ext_resource type="PackedScene" uid="uid://bdelo32wsfv3t" path="res://scenes/levels/moving_platform.tscn" id="3_c5o3r"]
+[ext_resource type="PackedScene" uid="uid://b0otxfha046rb" path="res://scenes/levels/level.tscn" id="1_5mrfj"]
+[ext_resource type="PackedScene" uid="uid://stdrudko1go4" path="res://scenes/items/door.tscn" id="2_l7y8c"]
+[ext_resource type="PackedScene" uid="uid://bdelo32wsfv3t" path="res://scenes/levels/moving_platform.tscn" id="3_vi0xj"]
 
-[node name="level_02" instance=ExtResource("1_vq1pa")]
+[node name="level_02" instance=ExtResource("1_5mrfj")]
 
 [node name="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
 centered = false
@@ -23,29 +23,29 @@ position = Vector2(-90, 0)
 [node name="SpawnPoint" parent="." index="5"]
 position = Vector2(-76, -158)
 
-[node name="Door" parent="." index="8" instance=ExtResource("2_c5o3r")]
+[node name="Door" parent="." index="8" instance=ExtResource("2_l7y8c")]
 visible = false
 position = Vector2(741, 39)
 
-[node name="MovingPlatform" parent="." index="10" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform" parent="." index="10" instance=ExtResource("3_vi0xj")]
 position = Vector2(113, -16)
 
-[node name="MovingPlatform4" parent="." index="11" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform4" parent="." index="11" instance=ExtResource("3_vi0xj")]
 position = Vector2(-95, 68)
 
-[node name="MovingPlatform7" parent="." index="12" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform7" parent="." index="12" instance=ExtResource("3_vi0xj")]
 position = Vector2(-7, 111)
 
-[node name="MovingPlatform5" parent="." index="13" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform5" parent="." index="13" instance=ExtResource("3_vi0xj")]
 position = Vector2(237, 28)
 
-[node name="MovingPlatform6" parent="." index="14" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform6" parent="." index="14" instance=ExtResource("3_vi0xj")]
 position = Vector2(91, 137)
 
-[node name="MovingPlatform2" parent="." index="15" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform2" parent="." index="15" instance=ExtResource("3_vi0xj")]
 position = Vector2(368, 86)
 
-[node name="MovingPlatform3" parent="." index="16" instance=ExtResource("3_c5o3r")]
+[node name="MovingPlatform3" parent="." index="16" instance=ExtResource("3_vi0xj")]
 position = Vector2(517, 13)
 
 [connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dy7t3058n5tcv"]
+[gd_scene load_steps=18 format=3 uid="uid://dy7t3058n5tcv"]
 
 [ext_resource type="Script" uid="uid://c6mkyxknswl6m" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cxw32v8ro66o5" path="res://assets/player_sheet.png" id="2_qhqgy"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bjtk7ddtsnq4x" path="res://assets/game-over-arcade-6435.ogg" id="5_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
-size = Vector2(9, 18)
+size = Vector2(9, 15)
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
@@ -157,7 +157,10 @@ _data = {
 offsets = PackedFloat32Array(0, 0.984202, 1)
 colors = PackedColorArray(0.608702, 0.638199, 0.00287244, 1, 1, 1, 0.968627, 0, 1, 1, 1, 1)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(12, 4)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_g2els")
@@ -170,7 +173,7 @@ hframes = 19
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -10)
+position = Vector2(-0.5, -11.5)
 shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -209,3 +212,13 @@ color_ramp = SubResource("Gradient_dqkch")
 
 [node name="GameOverMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qlg0r")
+
+[node name="StompZone" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompZone"]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_qlg0r")
+
+[connection signal="area_entered" from="StompZone" to="." method="_on_StompZone_area_entered"]

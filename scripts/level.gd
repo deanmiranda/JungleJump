@@ -54,10 +54,10 @@ func spawn_items() -> void:
 			item.picked_up.connect(self._on_item_picked_up)
 
 func _on_item_picked_up(t: String) -> void:
-	GameState.increment_score()
 	if t == "gem":
 		$Player.heal(1)
 	elif t == "cherry":
+		GameState.increment_score()
 		cherry_count += 1
 		if cherry_count % 10 == 0:
 			$Player.heal(1)
