@@ -70,7 +70,7 @@ func _on_player_died() -> void:
 		# SHAKE on life loss
 		var cam := $Player/Camera2D
 		if cam and cam.has_method("start_shake"):
-			cam.start_shake(14.0, 0.40)  # tweak intensity/duration to taste
+			cam.start_shake(14.0, 0.40)
 
 		if hud_node and hud_node.has_method("show_life_lost"):
 			hud_node.show_life_lost()

@@ -6,7 +6,7 @@ var _shake_intensity: float = 0.0
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 var _base: Vector2 = Vector2.ZERO
-@export var use_offset: bool = true  # shake using Camera2D.offset (recommended)
+@export var use_offset: bool = true  
 
 func _ready() -> void:
 	_rng.randomize()
@@ -16,7 +16,7 @@ func _ready() -> void:
 		_base = position
 
 func start_shake(intensity: float = 12.0, duration: float = 0.35) -> void:
-	_shake_duration = max(duration, 0.001) # avoid div-by-zero
+	_shake_duration = max(duration, 0.001)
 	_shake_time = _shake_duration
 	_shake_intensity = intensity
 
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 
 	_shake_time -= delta
 	var t: float = float(max(_shake_time / _shake_duration, 0.0))
-	var amp: float = _shake_intensity * t  # linear falloff; change to t * t for faster decay
+	var amp: float = _shake_intensity * t 
 
 	var dir: Vector2 = Vector2(
 		_rng.randf_range(-1.0, 1.0),

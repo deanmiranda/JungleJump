@@ -27,12 +27,13 @@ func change_state(new_state):
 		IDLE:
 			$AnimationPlayer.play('idle')
 		HURT:
-			$AnimationPlayer.play('hurt')
+			$AnimationPlayer.play("hurt")
 			velocity.y = -200
-			velocity.x = -100  * sign(velocity.x)
+			velocity.x = -100 * sign(velocity.x)
 			life -= 1
 			await get_tree().create_timer(0.5).timeout
-			change_state(IDLE)
+			if state == HURT and life > 0:   # <- guard
+				change_state(IDLE)
 		RUN:
 			$AnimationPlayer.play('run')
 		JUMP:
@@ -47,7 +48,8 @@ func change_state(new_state):
 			hide()
 			velocity = Vector2.ZERO
 			set_physics_process(false)
-			$GameOverMusic.play()
+			if GameState.lives_remaining <= 0:
+				$GameOverMusic.play()
 
 func get_input():
 	# Prevent input if player is hurt or dead
@@ -79,7 +81,7 @@ func get_input():
 			$AnimationPlayer.play("crouch") 
 		else:
 			velocity.y = 0
-			$AnimationPlayer.stop
+			$AnimationPlayer.stop()
 	# Exit CLIMB state if no longer on a ladder
 	if state == CLIMB and not is_on_ladder:
 		change_state(IDLE)
@@ -163,8 +165,9 @@ func _physics_process(delta):
 		$AnimationPlayer.play('jump_down')
 		# Check for fall death
 	if global_position.y >= fall_death_y:
-		hurt()
+		set_life(0)
 		return
+		
 
 func _on_StompZone_area_entered(area: Area2D) -> void:
 	if velocity.y > 50 and area.is_in_group("enemy_head"):
@@ -177,14 +180,15 @@ func _on_StompZone_area_entered(area: Area2D) -> void:
 func reset(_position):
 	life = 3
 	position = _position
+	velocity = Vector2.ZERO
 	show()
-	set_physics_process(true) 
+	set_physics_process(true)
 	change_state(IDLE)
 
 func set_life(value):
 	life = value
 	life_changed.emit(life)
-	if life <= 0:
+	if life <= 0 and state != DEAD:
 		change_state(DEAD)
 
 func hurt():

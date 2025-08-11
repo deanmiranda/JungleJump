@@ -32,8 +32,9 @@ func increment_score():
 	score += 1
 	score_updated.emit(score)
 
-# NEW: consume one life; return true if we should continue (respawn), false = game over
 func consume_life() -> bool:
-	lives_remaining = max(0, lives_remaining - 1)
-	lives_updated.emit(lives_remaining)
-	return lives_remaining > 0
+	if lives_remaining >= 1:
+		lives_remaining -= 1
+		lives_updated.emit(lives_remaining)
+		return true   # you DO respawn even if it just became 0
+	return false      # no lives to consume → real game over
