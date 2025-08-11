@@ -64,12 +64,24 @@ func _on_item_picked_up(t: String) -> void:
 
 func _on_player_died() -> void:
 	$Music.stop()
-	var parent_node = get_parent()
 	var hud_node = get_node_or_null("CanvasLayer/HUD")
-	hud_node.show_game_over()
-	await get_tree().create_timer(2.5).timeout
-	GameState.restart()
-	
+
+	# Try to consume a life; if true, we can respawn; if false, it's game over
+	if GameState.consume_life():
+		# Optional: show a brief "Life Lost" flash instead of full game over
+		if hud_node and hud_node.has_method("show_life_lost"):
+			hud_node.show_life_lost()
+
+		await get_tree().create_timer(0.8).timeout
+		$Player.reset($SpawnPoint.position)
+		$Music.play() # back to gameplay
+	else:
+		# True game over flow (what you had)
+		if hud_node:
+			hud_node.show_game_over()
+			await get_tree().create_timer(2.5).timeout
+			GameState.restart()
+
 func _on_door_body_entered(_body: Node, door: Area2D) -> void:
 	if level_transition_started:
 		return
@@ -111,7 +123,6 @@ func _set_boss_door_locked(locked: bool) -> void:
 		return
 	# Hide/show
 	boss_door.visible = not locked
-	print('boss door visible? ', boss_door.visible)
 	# Stop/allow overlap signals
 	boss_door.set_deferred("monitoring", not locked)
 	# Disable/enable *all* CollisionShape2D / CollisionPolygon2D under the door

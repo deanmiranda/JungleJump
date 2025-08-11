@@ -8,3 +8,7 @@ res://scenes/enemies/enemy.tscn
 res://scenes/levels/level_01.tscn
 res://scripts/player.gd
 res://scenes/levels/level_04.tscn
+res://scripts/hud.gd
+res://scenes/levels/boss_level.tscn
+res://scripts/game_state.gd
+res://scenes/ui/HUD.tscn

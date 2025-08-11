@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c171pqodkpb32"]
+[gd_scene load_steps=8 format=3 uid="uid://c171pqodkpb32"]
 
 [ext_resource type="Script" uid="uid://dhrabp0u0cipc" path="res://scripts/hud.gd" id="1_6ll6g"]
 [ext_resource type="FontFile" uid="uid://bbb0offmfaf2e" path="res://assets/Kenney Thick.ttf" id="1_atyv1"]
 [ext_resource type="Texture2D" uid="uid://bt7i6wau88tsj" path="res://assets/heart.png" id="2_6ll6g"]
+[ext_resource type="Texture2D" uid="uid://cxw32v8ro66o5" path="res://assets/player_sheet.png" id="4_ig75s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ig75s"]
 font = ExtResource("1_atyv1")
@@ -14,6 +15,12 @@ outline_color = Color(0, 0, 0, 1)
 line_spacing = 6.0
 font = ExtResource("1_atyv1")
 font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ed8p"]
+font = ExtResource("1_atyv1")
+font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
@@ -80,3 +87,23 @@ layout_mode = 2
 text = "Game Over"
 label_settings = SubResource("LabelSettings_6ll6g")
 horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="Lives" type="Label" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "How many lives you have left dummy! "
+text = "Lives"
+label_settings = SubResource("LabelSettings_4ed8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer2/HBoxContainer"]
+position = Vector2(-28.5, 10.5)
+scale = Vector2(1.75, 1.76667)
+texture = ExtResource("4_ig75s")
+region_enabled = true
+region_rect = Rect2(306.714, 8.34899, 28.2237, 30.7895)

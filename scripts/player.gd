@@ -180,6 +180,7 @@ func reset(_position):
 	life = 3
 	position = _position
 	show()
+	set_physics_process(true) # NEW: re-enable after DEAD disabled it
 	change_state(IDLE)
 
 func set_life(value):
