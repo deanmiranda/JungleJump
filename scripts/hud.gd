@@ -3,14 +3,13 @@ extends MarginContainer
 @onready var life_counter = $VBoxContainer/HBoxContainer/LifeCounter.get_children()
 @onready var score_label = $VBoxContainer/HBoxContainer/Score
 @onready var game_over_label = $VBoxContainer/HBoxContainer2/GameOver
-@onready var lives_label = $VBoxContainer2/HBoxContainer.get_node_or_null("Lives") # NEW (Label)
+@onready var lives_label = $VBoxContainer2/HBoxContainer.get_node_or_null("Lives")
 
 func _ready():
 	hide_game_over()
 	update_score(GameState.score)
 	GameState.score_updated.connect(update_score)
 
-	# NEW: init + connect lives
 	_update_lives_display(GameState.lives_remaining)
 	if GameState.lives_updated.is_connected(_update_lives_display) == false:
 		GameState.lives_updated.connect(_update_lives_display)
@@ -22,7 +21,6 @@ func update_life(value):
 func update_score(value):
 	score_label.text = str(value)
 
-# NEW
 func _update_lives_display(value: int) -> void:
 	if lives_label:
 		lives_label.text = "x" + str(value)
@@ -33,10 +31,8 @@ func show_game_over():
 func hide_game_over():
 	game_over_label.visible = false
 
-# Optional: brief "Life Lost" flash
 func show_life_lost():
-	# If you add a Label named LifeLost at HBoxContainer2/LifeLost, you can flash it
-	var life_lost := $VBoxContainer/HBoxContainer2.get_node_or_null("LifeLost")
+	var life_lost := $VBoxContainer2/HBoxContainer2.get_node_or_null("LifeLost")
 	if life_lost:
 		life_lost.visible = true
 		var t := create_tween()

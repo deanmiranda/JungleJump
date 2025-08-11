@@ -15,7 +15,6 @@ func init (type, _position):
 	$Sprite2D.texture = load(textures[type])
 	position = _position
 
-# This signal is probably wrong! page 112 says on item body entered but I couldn't use that
 func _on_body_entered(_body: Node2D) -> void:
 	picked_up.emit(item_type)  
 	$ItemSound.play()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dy7t3058n5tcv"]
+[gd_scene load_steps=19 format=3 uid="uid://dy7t3058n5tcv"]
 
 [ext_resource type="Script" uid="uid://c6mkyxknswl6m" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cxw32v8ro66o5" path="res://assets/player_sheet.png" id="2_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://bu4vdv40vvwid" path="res://assets/audio/jump4.ogg" id="3_dqkch"]
+[ext_resource type="Script" uid="uid://dmpqo2nqw6ddg" path="res://scripts/camera_shake.gd" id="3_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://cn8p31conqrh0" path="res://assets/audio/hurt1.ogg" id="4_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://bjtk7ddtsnq4x" path="res://assets/game-over-arcade-6435.ogg" id="5_qlg0r"]
 
@@ -179,6 +180,7 @@ shape = SubResource("RectangleShape2D_3vyb7")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -16)
 zoom = Vector2(2, 2)
+script = ExtResource("3_tuyoq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")

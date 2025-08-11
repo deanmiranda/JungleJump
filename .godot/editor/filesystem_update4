@@ -12,3 +12,5 @@ res://scripts/hud.gd
 res://scenes/levels/boss_level.tscn
 res://scripts/game_state.gd
 res://scenes/ui/HUD.tscn
+res://scripts/item.gd
+res://scripts/camera_shake.gd

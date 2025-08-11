@@ -8,7 +8,7 @@ signal died
 @export var jump_speed = -200
 @export var max_jumps = 2
 @export var double_jump_factor = .75
-@export var climb_speed = 75
+@export var climb_speed = 100
 @export var fall_death_y = 1000 
 
 enum { IDLE, HURT, RUN, CROUCH, JUMP, CLIMB, DEAD }
@@ -150,10 +150,8 @@ func _physics_process(delta):
 		if col.is_in_group("danger") and not _stomped_this_frame:
 			hurt()
 		elif col.is_in_group("enemies") and not _stomped_this_frame:
-			# side/under contact = hurt (stomp handled by StompZone)
 			if col.has_method("take_damage"):
-				# do nothing here; StompZone will handle top hits
-				if velocity.y <= 0: # rising or horizontal into enemy
+				if velocity.y <= 0: 
 					hurt()
 			else:
 				hurt()
@@ -180,7 +178,7 @@ func reset(_position):
 	life = 3
 	position = _position
 	show()
-	set_physics_process(true) # NEW: re-enable after DEAD disabled it
+	set_physics_process(true) 
 	change_state(IDLE)
 
 func set_life(value):
@@ -193,6 +191,9 @@ func hurt():
 	if state != HURT:
 		change_state(HURT)
 		$HurtSound.play()
+		var cam := get_node_or_null("Camera2D")
+		if cam and cam.has_method("start_shake"):
+			cam.start_shake(6.0, 0.18)
 
 func _on_door_body_entered(_body):
 	pass

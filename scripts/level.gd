@@ -12,7 +12,7 @@ func _ready():
 	$Items.hide()
 	$Player.reset($SpawnPoint.position)
 	set_camera_limits()
-	boss_ref = get_tree().get_first_node_in_group("boss") as Boss  # <-- replace your lookup
+	boss_ref = get_tree().get_first_node_in_group("boss") as Boss 
 	spawn_items()
 	create_ladders()
 	if boss_ref:
@@ -66,26 +66,27 @@ func _on_player_died() -> void:
 	$Music.stop()
 	var hud_node = get_node_or_null("CanvasLayer/HUD")
 
-	# Try to consume a life; if true, we can respawn; if false, it's game over
 	if GameState.consume_life():
-		# Optional: show a brief "Life Lost" flash instead of full game over
+		# SHAKE on life loss
+		var cam := $Player/Camera2D
+		if cam and cam.has_method("start_shake"):
+			cam.start_shake(14.0, 0.40)  # tweak intensity/duration to taste
+
 		if hud_node and hud_node.has_method("show_life_lost"):
 			hud_node.show_life_lost()
 
 		await get_tree().create_timer(0.8).timeout
 		$Player.reset($SpawnPoint.position)
-		$Music.play() # back to gameplay
+		$Music.play()
 	else:
-		# True game over flow (what you had)
 		if hud_node:
 			hud_node.show_game_over()
-			await get_tree().create_timer(2.5).timeout
-			GameState.restart()
+		await get_tree().create_timer(2.5).timeout
+		GameState.restart()
 
 func _on_door_body_entered(_body: Node, door: Area2D) -> void:
 	if level_transition_started:
 		return
-	# If there is a boss, only allow transition from the boss_door when it's unlocked
 	if boss_ref:
 		var is_boss_door := (door == boss_door)
 		var locked := (boss_door == null) or (boss_door.visible == false) or (boss_door.monitoring == false)
