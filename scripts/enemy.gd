@@ -28,7 +28,6 @@ func take_damage():
 	$CollisionShape2D.set_deferred("disabled", true)
 	set_physics_process(false)
 
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
 		queue_free()

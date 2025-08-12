@@ -9,6 +9,8 @@ signal died
 @export var projectile_scene: PackedScene
 @export var arena_left: float = -200.0
 @export var arena_right: float = 200.0
+@onready var fire_sfx: AudioStreamPlayer2D = $FireSFX
+@onready var death_sfx: AudioStreamPlayer2D = $BossDead
 
 enum { INTRO, IDLE, SWOOP, SHOOT, STUNNED, DEAD }
 var state: int = INTRO
@@ -42,7 +44,12 @@ func change_state(s: int) -> void:
 		DEAD:
 			died.emit()
 			$HurtBox/CollisionShape2D.set_deferred("disabled", true)
+			if fire_sfx and fire_sfx.playing:
+				fire_sfx.stop()
+			if death_sfx:
+				death_sfx.play()
 			$AnimationPlayer.play("die")
+			
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -96,6 +103,9 @@ func _do_shoot_burst() -> void:
 		return
 	var shots := 3
 	for i in range(shots):
+		if fire_sfx:
+			fire_sfx.pitch_scale = randf_range(0.96, 1.04)
+			fire_sfx.play()
 		var p: Node2D = projectile_scene.instantiate() as Node2D
 		get_parent().add_child(p)
 		p.global_position = $Muzzle.global_position

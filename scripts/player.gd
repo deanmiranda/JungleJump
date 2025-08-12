@@ -18,6 +18,9 @@ var life = 3: set = set_life
 var jump_count = 0
 var is_on_ladder = false
 
+@onready var sfx_jump: AudioStreamPlayer2D = $JumpSound
+@onready var sfx_double: AudioStreamPlayer2D = $DoubleJumpSound
+
 func _ready():
 	change_state(IDLE)
 
@@ -107,12 +110,14 @@ func get_input():
 	# --- JUMP state logic ---
 	# Handle mid-air extra jumps (e.g., double jump)
 	if jump and state == JUMP and jump_count < max_jumps and jump_count > 0:
-		$JumpSound.play()
+		if sfx_double: sfx_double.play()    
 		$AnimationPlayer.play("jump_up")
 		velocity.y = jump_speed / double_jump_factor
 		jump_count += 1
 	# Handle normal jump from ground
 	if jump and is_on_floor():
+		$JumpSound.play()
+		
 		change_state(JUMP)
 		velocity.y = jump_speed
 

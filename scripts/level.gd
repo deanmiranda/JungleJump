@@ -6,24 +6,39 @@ var level_transition_started = false
 var cherry_count: int = 0
 var boss_ref: Boss = null
 var boss_door: Area2D = null 
+var hud_node = get_node_or_null("CanvasLayer/HUD")
+var _handling_player_death := false
 
 func _ready():
-	$Music.play()
+	GameState.ensure_run_initialized()
 	$Items.hide()
 	$Player.reset($SpawnPoint.position)
 	set_camera_limits()
 	boss_ref = get_tree().get_first_node_in_group("boss") as Boss 
 	spawn_items()
 	create_ladders()
+	if $Player.died.is_connected(_on_player_died):
+		$Player.died.disconnect(_on_player_died)
+	$Player.died.connect(_on_player_died)
+	
+	if has_node("Music"): $Music.stop()
+	if has_node("BossMusic"): $BossMusic.stop()
+
 	if boss_ref:
+		$BossMusic.play()
 		boss_ref.died.connect(_on_boss_died)
+	else:
+		$Music.play()
+		
+	if hud_node and hud_node.has_method("hide_life_lost"):
+		hud_node.hide_life_lost()
 
 func set_camera_limits():
 	var map_size = $World.get_used_rect()
 	var cell_size = $World.tile_set.tile_size
 	$Player/Camera2D.limit_left = (map_size.position.x - 5) * cell_size.x
 	$Player/Camera2D.limit_right = (map_size.end.x + 5) * cell_size.x
-			
+
 func spawn_items() -> void:
 	
 	var cells: Array[Vector2i] = $Items.get_used_cells(0)
@@ -63,25 +78,31 @@ func _on_item_picked_up(t: String) -> void:
 			$Player.heal(1)
 
 func _on_player_died() -> void:
+	if _handling_player_death:
+		return
+	_handling_player_death = true
+
 	$Music.stop()
 	var hud_node = get_node_or_null("CanvasLayer/HUD")
 
 	if GameState.consume_life():
-		# SHAKE on life loss
+		# Optional juice: small shake + "life lost" banner before restart
 		var cam := $Player/Camera2D
 		if cam and cam.has_method("start_shake"):
 			cam.start_shake(14.0, 0.40)
-
 		if hud_node and hud_node.has_method("show_life_lost"):
 			hud_node.show_life_lost()
 
 		await get_tree().create_timer(0.8).timeout
-		$Player.reset($SpawnPoint.position)
-		$Music.play()
+		# Hard reset the level so enemies/items/doors return to initial state
+		GameState.restart_level()
+		# No need to clear the flag; the scene is about to reload
+		return
 	else:
 		if hud_node:
 			hud_node.show_game_over()
 		await get_tree().create_timer(2.5).timeout
+		_handling_player_death = false
 		GameState.restart()
 
 func _on_door_body_entered(_body: Node, door: Area2D) -> void:

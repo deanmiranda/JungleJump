@@ -8,6 +8,12 @@ var textures = {
 	"gem": "res://assets/sprites/gem.png"
 }
 
+const SFX := {
+	"cherry": preload("res://assets/audio/pickups/cherry.ogg"),
+	"gem":    preload("res://assets/audio/pickups/gem.ogg"),
+	"default": preload("res://assets/audio/pickups/pickup_default.ogg"),
+}
+
 var item_type: String   
 
 func init (type, _position):
@@ -16,6 +22,16 @@ func init (type, _position):
 	position = _position
 
 func _on_body_entered(_body: Node2D) -> void:
-	picked_up.emit(item_type)  
-	$ItemSound.play()
+	# choose stream based on item_type
+	var stream: AudioStream = SFX.get(item_type, SFX.get("default"))
+	if stream:
+		var s := AudioStreamPlayer2D.new()
+		s.stream = stream
+		s.bus = "SFX"  # set to your SFX bus if you have one
+		get_tree().current_scene.add_child(s)
+		s.global_position = global_position
+		s.finished.connect(func(): s.queue_free())
+		s.play()
+
+	picked_up.emit(item_type)
 	queue_free()

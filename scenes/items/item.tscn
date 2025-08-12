@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://clyxi4pmowdd0"]
+[gd_scene load_steps=9 format=3 uid="uid://clyxi4pmowdd0"]
 
 [ext_resource type="Script" uid="uid://hkhqbw7uglcd" path="res://scripts/item.gd" id="1_jgeia"]
 [ext_resource type="Texture2D" uid="uid://s3ttnejrhf3d" path="res://assets/sprites/gem.png" id="2_fat2f"]
-[ext_resource type="AudioStream" uid="uid://cxaqfm4udicbl" path="res://assets/audio/pickup2.ogg" id="3_fat2f"]
+[ext_resource type="AudioStream" uid="uid://bbbfvvkob7ync" path="res://assets/audio/pickups/cherry.ogg" id="3_fat2f"]
+[ext_resource type="AudioStream" uid="uid://0mlnc3jmh1oo" path="res://assets/audio/pickups/gem.ogg" id="4_tfqyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfqyq"]
 radius = 7.0
@@ -69,11 +70,8 @@ autoplay = "item"
 
 [node name="ItemSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_fat2f")
-volume_db = -18.017
-pitch_scale = 0.96
-attenuation = 0.812253
-max_polyphony = 1681
-panning_strength = 0.0
-parameters/looping = false
+
+[node name="GemSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tfqyq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

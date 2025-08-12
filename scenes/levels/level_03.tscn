@@ -6,6 +6,9 @@
 
 [node name="level_03" instance=ExtResource("1_fvfhs")]
 
+[node name="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
+scale = Vector2(3, 3)
+
 [node name="Danger" parent="." index="1" groups=["enemies"]]
 
 [node name="World" parent="." index="2"]
@@ -13,8 +16,6 @@ layer_0/tile_data = PackedInt32Array(65535, 65536, 1, 0, 65536, 1, 1, 65536, 1, 
 
 [node name="Items" parent="." index="3" groups=["items"]]
 layer_0/tile_data = PackedInt32Array(-9, 327683, 12, -65530, 327683, 12, 6, 327683, 12, 65542, 327683, 12, 131063, 327683, 12, 65527, 327683, 12, -131070, 0, 0, -65534, 0, 0, -131069, 0, 0, -65533, 0, 0, -131068, 0, 0, -65532, 0, 0, -196616, 0, 0, -131080, 0, 0, -131079, 0, 0, -262150, 0, 0, -196614, 0, 0, -65542, 0, 0, -262149, 0, 0, -131077, 0, 0, -131076, 0, 0, -524282, 1, 0, -458718, 3, 3, -393182, 3, 4, -327646, 3, 5, -458717, 65539, 3, -393181, 65539, 4, -327645, 65539, 5, -458716, 131075, 3, -393180, 131075, 4, -327644, 131075, 5)
-
-[node name="Player" parent="." index="4" groups=["player"]]
 
 [node name="SpawnPoint" parent="." index="5"]
 position = Vector2(-39, -91)

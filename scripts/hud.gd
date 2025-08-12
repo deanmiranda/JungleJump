@@ -7,6 +7,7 @@ extends MarginContainer
 
 func _ready():
 	hide_game_over()
+	hide_life_lost() 
 	update_score(GameState.score)
 	GameState.score_updated.connect(update_score)
 
@@ -37,3 +38,8 @@ func show_life_lost():
 		life_lost.visible = true
 		var t := create_tween()
 		t.tween_interval(1.0).finished.connect(func(): life_lost.visible = false)
+
+func hide_life_lost() -> void:
+	var life_lost := $VBoxContainer2/HBoxContainer2.get_node_or_null("LifeLost")
+	if life_lost:
+		life_lost.visible = false

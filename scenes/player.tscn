@@ -1,11 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://dy7t3058n5tcv"]
+[gd_scene load_steps=20 format=3 uid="uid://dy7t3058n5tcv"]
 
 [ext_resource type="Script" uid="uid://c6mkyxknswl6m" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cxw32v8ro66o5" path="res://assets/player_sheet.png" id="2_qhqgy"]
-[ext_resource type="AudioStream" uid="uid://bu4vdv40vvwid" path="res://assets/audio/jump4.ogg" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://dmpqo2nqw6ddg" path="res://scripts/camera_shake.gd" id="3_tuyoq"]
-[ext_resource type="AudioStream" uid="uid://cn8p31conqrh0" path="res://assets/audio/hurt1.ogg" id="4_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://bw152tu7x0ne6" path="res://assets/audio/jump.ogg" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://bjtk7ddtsnq4x" path="res://assets/game-over-arcade-6435.ogg" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://doi83ygmm4mcm" path="res://assets/audio/doubleJump.ogg" id="5_smehm"]
+[ext_resource type="AudioStream" uid="uid://btnkkapfcix2f" path="res://assets/audio/punch 5.ogg" id="6_fjrip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(9, 15)
@@ -189,13 +190,13 @@ libraries = {
 }
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_dqkch")
-volume_db = -19.423
-pitch_scale = 2.75
-panning_strength = 3.0
+stream = ExtResource("4_fjrip")
+
+[node name="DoubleJumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_smehm")
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_qlg0r")
+stream = ExtResource("6_fjrip")
 
 [node name="Dust" type="CPUParticles2D" parent="."]
 position = Vector2(-2, 0)

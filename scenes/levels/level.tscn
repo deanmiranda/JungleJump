@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0otxfha046rb"]
+[gd_scene load_steps=11 format=3 uid="uid://b0otxfha046rb"]
 
 [ext_resource type="Script" uid="uid://bf6t2yiqdwb1o" path="res://scripts/level.gd" id="1_6cjw3"]
 [ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="1_vvcwp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c171pqodkpb32" path="res://scenes/ui/HUD.tscn" id="7_g7p6o"]
 [ext_resource type="AudioStream" uid="uid://cs7l2kwxorwuh" path="res://assets/audio/Grasslands Theme.ogg" id="8_40ga3"]
 [ext_resource type="PackedScene" uid="uid://dvsqy3yiish2d" path="res://scenes/levels/ladders.tscn" id="9_icy5c"]
+[ext_resource type="AudioStream" uid="uid://b85htc6rl0lwl" path="res://assets/audio/boss.ogg" id="10_rmjfq"]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_6cjw3")
@@ -50,6 +51,9 @@ position = Vector2(-100, -3)
 stream = ExtResource("8_40ga3")
 
 [node name="Ladders" parent="." instance=ExtResource("9_icy5c")]
+
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_rmjfq")
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Ladders" to="." method="_on_ladders_body_entered"]

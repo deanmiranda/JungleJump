@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8kci4lco1cpk"]
+[gd_scene load_steps=16 format=3 uid="uid://c8kci4lco1cpk"]
 
 [ext_resource type="Script" uid="uid://b8r4uv472sels" path="res://scripts/boss.gd" id="1_1ex25"]
 [ext_resource type="Texture2D" uid="uid://daa4ndvs15yjf" path="res://assets/sprites/flying_demon/flying_demon/style_A/spritesheet/spritesheet.png" id="2_3uc6t"]
 [ext_resource type="PackedScene" uid="uid://c62xuysx52uq6" path="res://scenes/enemies/projectile.tscn" id="2_ub7yk"]
+[ext_resource type="AudioStream" uid="uid://n7unagud83m4" path="res://assets/audio/fire_bomb.ogg" id="4_ian0n"]
+[ext_resource type="AudioStream" uid="uid://bxhfhq5rhoqfd" path="res://assets/audio/BossDead.ogg" id="5_yye4w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3uc6t"]
 radius = 19.0263
@@ -10,11 +12,8 @@ radius = 19.0263
 [sub_resource type="CircleShape2D" id="CircleShape2D_ub7yk"]
 radius = 20.0
 
-[sub_resource type="Animation" id="Animation_ub7yk"]
-resource_name = "idle"
-length = 0.6
-loop_mode = 1
-step = 0.0833333
+[sub_resource type="Animation" id="Animation_uq4kr"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,10 +21,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [85, 86, 87, 88, 89, 90, 91, 92]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [34]
 }
 
 [sub_resource type="Animation" id="Animation_ian0n"]
@@ -44,22 +43,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_yye4w"]
-resource_name = "hurt"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [102, 103, 104, 105, 106, 107, 108]
-}
-
 [sub_resource type="Animation" id="Animation_rvo7g"]
 resource_name = "die"
 step = 0.0416667
@@ -76,8 +59,9 @@ tracks/0/keys = {
 "values": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 84]
 }
 
-[sub_resource type="Animation" id="Animation_uq4kr"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_yye4w"]
+resource_name = "hurt"
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,10 +69,28 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [34]
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [102, 103, 104, 105, 106, 107, 108]
+}
+
+[sub_resource type="Animation" id="Animation_ub7yk"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [85, 86, 87, 88, 89, 90, 91, 92]
 }
 
 [sub_resource type="Animation" id="Animation_7dnpc"]
@@ -173,6 +175,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_h1cus")
 }
 autoplay = "idle"
+
+[node name="FireSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ian0n")
+max_polyphony = 4
+
+[node name="BossDead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_yye4w")
+pitch_scale = 0.56
+max_polyphony = 4
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_Collision_body_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_Hitbox_body_entered"]
