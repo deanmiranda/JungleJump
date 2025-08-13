@@ -1,3 +1,4 @@
+Marker2D
 AudioStreamPlayer2D
 Label
 HBoxContainer
@@ -9,6 +10,5 @@ Area2D
 ColorRect
 CharacterBody2D
 AnimationPlayer
-Marker2D
 Timer
 TileMap

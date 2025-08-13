@@ -9,6 +9,8 @@ var boss_door: Area2D = null
 var hud_node = get_node_or_null("CanvasLayer/HUD")
 var _handling_player_death := false
 
+@export var camera_bottom_margin_px: float = -200.0
+
 func _ready():
 	GameState.ensure_run_initialized()
 	$Items.hide()
@@ -33,12 +35,32 @@ func _ready():
 	if hud_node and hud_node.has_method("hide_life_lost"):
 		hud_node.hide_life_lost()
 
-func set_camera_limits():
-	var map_size = $World.get_used_rect()
-	var cell_size = $World.tile_set.tile_size
-	$Player/Camera2D.limit_left = (map_size.position.x - 5) * cell_size.x
-	$Player/Camera2D.limit_right = (map_size.end.x + 5) * cell_size.x
+func set_camera_limits() -> void:
+	# Keep your existing horizontal limits
+	var world := $World as TileMap
+	if world:
+		var map_size := world.get_used_rect()
+		var cell_size := world.tile_set.tile_size
+		$Player/Camera2D.limit_left  = (map_size.position.x - 5) * cell_size.x
+		$Player/Camera2D.limit_right = (map_size.end.x + 5) * cell_size.x
 
+	# Only apply a bottom clamp if there's a CameraFloor marker
+	var cam := $Player.get_node("Camera2D") as Camera2D
+	if cam == null:
+		return
+
+	var floor_marker := get_node_or_null("CameraFloor") as Node2D
+	if floor_marker == null:
+		return  # do nothing if no marker
+
+	var vp_h: float = get_viewport_rect().size.y / cam.zoom.y
+	var half_h: float = vp_h * 0.5
+
+	# Camera center cannot go below the marker's Y minus half the screen,
+	# minus a small margin so the player isn't glued to the bottom.
+	cam.limit_bottom = int(floor_marker.global_position.y - half_h - camera_bottom_margin_px)
+
+	# Leave limit_top as-is (no clamp) so upward movement is unrestricted.
 func spawn_items() -> void:
 	
 	var cells: Array[Vector2i] = $Items.get_used_cells(0)

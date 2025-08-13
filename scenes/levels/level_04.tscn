@@ -26,4 +26,7 @@ position = Vector2(-95, -1)
 [node name="Boss" parent="." index="9" instance=ExtResource("2_31sm7")]
 position = Vector2(244, -61)
 
+[node name="CameraFloor" type="Marker2D" parent="." index="11"]
+position = Vector2(77, 144)
+
 [connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]

@@ -27,7 +27,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	if stream:
 		var s := AudioStreamPlayer2D.new()
 		s.stream = stream
-		s.bus = "SFX"  # set to your SFX bus if you have one
+		s.bus = "SFX"
 		get_tree().current_scene.add_child(s)
 		s.global_position = global_position
 		s.finished.connect(func(): s.queue_free())

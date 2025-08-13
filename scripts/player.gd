@@ -11,6 +11,10 @@ signal died
 @export var climb_speed = 100
 @export var fall_death_y = 1000 
 
+@export var death_pop_height: float = 48.0      
+@export var death_pop_time: float   = 0.25
+@export var death_fall_time: float  = 0.80 
+
 enum { IDLE, HURT, RUN, CROUCH, JUMP, CLIMB, DEAD }
 
 var state = IDLE
@@ -47,12 +51,35 @@ func change_state(new_state):
 		CROUCH:
 			$AnimationPlayer.play('crouch')
 		DEAD:
+			# Death sequence: show hurt sprite, pop up, then fall off-screen.
+			$AnimationPlayer.play("hurt")
+
+			# Stop any further physics/input/collisions during the sequence
+			collision_layer = 0
+			collision_mask = 0
+			set_physics_process(false)
+			velocity = Vector2.ZERO
+
+			# Compute how far to drop so we go fully off-screen from the current camera view
+			var cam: Camera2D = $Camera2D
+			var viewport_h := get_viewport_rect().size.y / cam.zoom.y
+			var start_y := global_position.y
+			var up_y := start_y - death_pop_height
+			var offscreen_y := start_y + viewport_h + 64.0  # 64px buffer below the screen
+
+			# Tween up, then down off-screen
+			var tw := create_tween()
+			tw.tween_property(self, "global_position:y", up_y, death_pop_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			tw.tween_property(self, "global_position:y", offscreen_y, death_fall_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+			await tw.finished
+
+			# Now tell the level we died; level logic already handles life loss / restart
 			died.emit()
 			hide()
-			velocity = Vector2.ZERO
-			set_physics_process(false)
+
+			# Optional: play game-over sting only when truly out of lives
 			if GameState.lives_remaining <= 0:
-				$GameOverMusic.play()
+				if has_node("GameOverMusic"): $GameOverMusic.play()
 
 func get_input():
 	# Prevent input if player is hurt or dead
