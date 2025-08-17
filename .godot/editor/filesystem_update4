@@ -1,4 +1,4 @@
-res://scenes/items/item.tscn
+res://scenes/ui/title.tscn
 res://scripts/level.gd
 res://assets/tilesets/tiles_spikes.tres
 res://assets/tilesets/tiles_items.tres
@@ -8,8 +8,11 @@ res://scenes/levels/level.tscn
 res://scenes/enemies/enemy.tscn
 res://scenes/levels/level_01.tscn
 res://scenes/enemies/boss.tscn
-res://scripts/player.gd
-res://scripts/item.gd
+res://scenes/items/item.tscn
 res://scenes/levels/level_03.tscn
 res://scenes/levels/level_02.tscn
 res://scenes/levels/level_04.tscn
+res://scenes/levels/moving_platform.tscn
+res://scenes/ui/HUD.tscn
+res://scripts/player.gd
+res://scripts/boss.gd

@@ -6,7 +6,7 @@ signal died
 @export var gravity = 450
 @export var run_speed = 150
 @export var jump_speed = -200
-@export var max_jumps = 2
+@export var max_jumps = 3
 @export var double_jump_factor = .75
 @export var climb_speed = 100
 @export var fall_death_y = 1000 
@@ -192,7 +192,6 @@ func _physics_process(delta):
 	if state == JUMP and is_on_floor():
 		change_state(IDLE)
 		jump_count = 0
-		$Dust.emitting = true
 	if state == JUMP and velocity.y > 0:
 		$AnimationPlayer.play('jump_down')
 		# Check for fall death

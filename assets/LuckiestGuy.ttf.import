@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bbb0offmfaf2e"
-path="res://.godot/imported/Kenney Thick.ttf-6b7fa3fe010e7f2afd74e9614d2176dd.fontdata"
+uid="uid://cyf8b2bq7f5eu"
+path="res://.godot/imported/LuckiestGuy.ttf-06f804667e2617a94fa4f9c2fcf0e393.fontdata"
 
 [deps]
 
-source_file="res://assets/Kenney Thick.ttf"
-dest_files=["res://.godot/imported/Kenney Thick.ttf-6b7fa3fe010e7f2afd74e9614d2176dd.fontdata"]
+source_file="res://assets/LuckiestGuy.ttf"
+dest_files=["res://.godot/imported/LuckiestGuy.ttf-06f804667e2617a94fa4f9c2fcf0e393.fontdata"]
 
 [params]
 

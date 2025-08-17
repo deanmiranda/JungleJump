@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dy7t3058n5tcv"]
+[gd_scene load_steps=19 format=3 uid="uid://dy7t3058n5tcv"]
 
 [ext_resource type="Script" uid="uid://c6mkyxknswl6m" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cxw32v8ro66o5" path="res://assets/player_sheet.png" id="2_qhqgy"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://btnkkapfcix2f" path="res://assets/audio/punch 5.ogg" id="6_fjrip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
-size = Vector2(9, 15)
+size = Vector2(12, 15)
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
@@ -155,10 +155,6 @@ _data = {
 &"run": SubResource("Animation_dqkch")
 }
 
-[sub_resource type="Gradient" id="Gradient_dqkch"]
-offsets = PackedFloat32Array(0, 0.984202, 1)
-colors = PackedColorArray(0.608702, 0.638199, 0.00287244, 1, 1, 1, 0.968627, 0, 1, 1, 1, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(12, 4)
 
@@ -175,7 +171,7 @@ hframes = 19
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -11.5)
+position = Vector2(-1, -11.5)
 shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -197,21 +193,6 @@ stream = ExtResource("5_smehm")
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_fjrip")
-
-[node name="Dust" type="CPUParticles2D" parent="."]
-position = Vector2(-2, 0)
-rotation = 1.5708
-emitting = false
-amount = 20
-lifetime = 0.45
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-emission_shape = 3
-emission_rect_extents = Vector2(1, 7)
-initial_velocity_max = 10.0
-scale_amount_max = 3.0
-color_ramp = SubResource("Gradient_dqkch")
 
 [node name="GameOverMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qlg0r")

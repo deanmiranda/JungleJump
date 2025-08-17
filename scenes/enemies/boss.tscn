@@ -185,7 +185,7 @@ stream = ExtResource("5_yye4w")
 pitch_scale = 0.56
 max_polyphony = 4
 
-[connection signal="body_entered" from="HitBox" to="." method="_on_Collision_body_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_Collision_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_Hurtbox_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

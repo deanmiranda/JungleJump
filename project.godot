@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="JungleJump"
+config/name="Lucky Runner"
 run/main_scene="uid://dr3a87l55sqks"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"

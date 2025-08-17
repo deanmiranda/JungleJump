@@ -3,9 +3,9 @@ class_name Boss
 
 signal died
 
-@export var max_life: int = 2
-@export var speed: float = 120.0
-@export var swoop_speed: float = 260.0
+@export var max_life: int = 5
+@export var speed: float = 180.0
+@export var swoop_speed: float = 300.0
 @export var projectile_scene: PackedScene
 @export var arena_left: float = -200.0
 @export var arena_right: float = 200.0
